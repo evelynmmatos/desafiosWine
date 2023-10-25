@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet" />
+    <script src="script.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Mercearia do José</h1>
+    </header>
+    <div class="container">
+        <div class="listaProdutos_area">
+            <p>Lista de Produtos</p>
+            <ul class="ListaValores">
+                <li></li>
+            </ul>
+            
+        </div>
+        <div class="input_area">
+
+            <div class="InputValorProduto">
+                <p>Digite o valor do produto</p>
+                <input id="InputvalorProduto" type="number" placeholder="Digite o valor do produto">
+                <button onclick="adicionarProduto()">Adcionar</button>
+
+            </div>
+
+            <div class="InputValorTroco">
+                <p>Digite o valor Recebido</p>
+                <input id="InputValorRecebido" type="number" placeholder="Digite o valor do Valor recebido">
+                <button onclick="calcularTroco()">Calcular Troco</button>
+
+            </div>
+
+            <button id="encerrar" onclick="encerrar()">Encerrar</button>
+            
+        </div>
+    </div>
+    <div class="footer">
+    
+            <p>Valor Total : R$ <span id="valorTotal"></span></p>
+            <p>Valor Recebido: R$ <span id="valorRecebido"></span></p>
+            <p>Valor Troco: R$ <span id="valorTroco"></span></p>
+        
+    </div>
+</body>
+</html>
