@@ -20,6 +20,9 @@ export const getAllProducts =  async ():Promise<getProductType> => {
     return result.data
 }
 
+
+
+//Definição limite de busca entre Desktop(9) e Mobile(8)
 const limit = window.innerWidth > 768 ? 9 : 8;
 
 
@@ -27,7 +30,7 @@ export const getProducts = async (pageActive:number):Promise<getProductType> => 
 
     const url = `/products?page=${pageActive}&limit=${limit}`;
 
-    console.log(pageActive)
+    
     try {
         const result = await api.get(url);
         return result.data;
@@ -38,31 +41,21 @@ export const getProducts = async (pageActive:number):Promise<getProductType> => 
 }
 
 
-export const getProductSearch = async (pageActive:number, filtersearch?: string):Promise<getProductType> => {
+export const getProductsSearch = async (pageActive:number, keyWord: string, keyPrice: string):Promise<getProductType> => {
     
     let url = `/products?page=${pageActive}&limit=${limit}`;
 
-    if (filtersearch) {
-        url += `&name=${encodeURIComponent(filtersearch)}`;
+    if (keyWord != 'all'){
+        
+        url += `&name=${encodeURIComponent(keyWord)}`;
     }
 
-    try {
-        const result = await api.get(url);
-        return result.data;
-    } catch (error) {
-        throw new Error(`Erro na requisição: ${error.message}`);
+    if (keyPrice != 'all'){
+        
+        url += `&filter=${encodeURIComponent(keyPrice)}`
     }
+
     
-}
-
-
-export const getProductsFilter = async (pageActive:number, filterValue?: string):Promise<getProductType> => {
-    
-    let url = `/products?page=${pageActive}&limit=${limit}`;
-
-    if (filterValue){
-        url += `&filter=${encodeURIComponent(filterValue)}`
-    }
 
     try {
         const result = await api.get(url);

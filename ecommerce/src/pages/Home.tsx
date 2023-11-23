@@ -3,10 +3,10 @@ import { FilterPrice } from "../components/Filters/FilterPrice";
 import { ProductNotFind } from "../components/ProductNotFind";
 import { SkeletonLoadingHome } from "../components/SkeletonLoading/SkeletonLoadingHome";
 import UsePagination from "../components/Pagination/UsePagination";
+import LoadMoreButton from "../components/Pagination/LoadMoreButton";
 
 import { getProducts } from "../services/api";
 import useGetProducts from "../hooks/useGetProducts";
-import LoadMoreButton from "../components/Pagination/LoadMoreButton";
 
 export const Home = () => {
 

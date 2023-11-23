@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { Search } from "./pages/Search";
-import { Price } from "./pages/Price";
 import { PageProduct } from "./pages/Product";
 import { NotFound } from "./pages/NotFound";
 
@@ -23,7 +22,6 @@ export const AppRoutes = () => {
                 <Route path="/loja/vinhos/:id" element={<PageProduct />} />
                 <Route path="/vinhos/:id" element={<PageProduct />} />
                 <Route path="/loja/search" element={<Search />} />
-                <Route path="/loja/filter" element={<Price />} />
                 <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

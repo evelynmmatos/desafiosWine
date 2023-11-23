@@ -5,7 +5,7 @@ import { setPrice } from "../../Redux/reducers/filterReducer";
 
 import ImageSearch from '../../assets/search.svg';
 import ImageSearchPink from '../../assets/searchPink.svg';
-
+import { useSearchParams } from 'react-router-dom';
 
 
 
@@ -18,7 +18,8 @@ export default function ButtonSearch(){
 
     
     
-    //const Dispatch = useDispatch()
+    
+    const [searchParams] = useSearchParams();
     const [openSearch, setOpenSeach] = useState(false)
     const [inputSearch, setInputSearch] = useState('')
 
@@ -33,8 +34,15 @@ export default function ButtonSearch(){
         
         dispatch(setPrice(''))
 
+        const KeyPrice = searchParams.get("keyprice");
 
-        navigate(`/loja/search?q=${inputSearch}`);
+        if(KeyPrice != null){
+            navigate(`/loja/search?q=${inputSearch}&keyprice=${KeyPrice}`);
+        }else {
+            navigate(`/loja/search?q=${inputSearch}&keyprice=all`);
+        }
+
+        
         setInputSearch('');
         setOpenSeach(!openSearch);
       

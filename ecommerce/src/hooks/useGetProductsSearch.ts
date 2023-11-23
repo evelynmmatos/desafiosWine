@@ -1,25 +1,29 @@
 import { useState, useEffect } from 'react';
 import { Product } from '../types/types';
-
+import { useSearchParams } from 'react-router-dom';
 
 const isMobile = window.innerWidth > 768 ? false : true;
-type FetchFunction = (page: number) => Promise<{ items: Product[]; totalPages: number; totalItems: number }>;
 
-const useGetProducts = (fetchFunction: FetchFunction) => {
-  
+type FetchFunction = (page: number, keyWord: string, keyPrice: string) => Promise<{ items: Product[]; totalPages: number; totalItems: number }>;
+
+const useGetProductsSearch = (fetchFunction: FetchFunction) => {
+  const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(true);
   const [pageActive, setPageActive] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
-  
+  const keyword = searchParams.get("q");
+  const KeyPrice = searchParams.get("keyprice");
 
+    
+    
   const fetchProducts = async () => {
     setIsLoading(true);
     
     try {
-      const result = await fetchFunction(pageActive);
-
+      const result = await fetchFunction(pageActive, keyword as string, KeyPrice as string);
+        
       if (isMobile && pageActive > 1) {
         // Adiciona itens ao array existente no modo móvel
         setProducts(() => [...products, ...result.items]);
@@ -31,6 +35,7 @@ const useGetProducts = (fetchFunction: FetchFunction) => {
       setTotalPages(result.totalPages);
       setTotalItems(result.totalItems);
 
+      
     } catch (error) {
       console.error('Error fetching products:', error);
     } finally {
@@ -40,7 +45,7 @@ const useGetProducts = (fetchFunction: FetchFunction) => {
 
   useEffect(() => {
     fetchProducts();
-  }, [pageActive]);
+  }, [pageActive, keyword, KeyPrice]);
 
   const handlePageChange = (newPage: number) => {
     setPageActive(newPage);
@@ -62,4 +67,4 @@ const useGetProducts = (fetchFunction: FetchFunction) => {
   };
 };
 
-export default useGetProducts;
+export default useGetProductsSearch;

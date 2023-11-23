@@ -3,16 +3,16 @@ import { ProductNotFind } from "../components/ProductNotFind";
 import { CardProduct } from "../components/CardProduct";
 import { FilterPrice } from "../components/Filters/FilterPrice";
 import UsePagination from "../components/Pagination/UsePagination";
-import { getProductSearch } from "../services/api";
-import useGetProducts from "../hooks/useGetProducts";
 import LoadMoreButton from "../components/Pagination/LoadMoreButton";
+import useGetProductsSearch from "../hooks/useGetProductsSearch";
+import { getProductsSearch } from "../services/api";
 
 
 
 export const Search = () => {
 
   const isMobile = window.innerWidth > 768 ? false : true;
-  const GetProductsSearch = () => useGetProducts(getProductSearch);
+  const GetProductsSearch = () => useGetProductsSearch(getProductsSearch);
 
   const {
     products,
