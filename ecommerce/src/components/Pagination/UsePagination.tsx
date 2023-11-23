@@ -58,7 +58,8 @@ export default function UsePagination({totalPages, activePage, onClick}:Props) {
                     color: selected ? 'white' : '#B6116E',
                     backgroundColor: selected ? '#B6116E' : 'white',
                     border: '1px solid #B6116E',
-                    borderRadius: '3px'
+                    borderRadius: '3px',
+                    outline: 'none'
                   
                 }}
                
