@@ -100,6 +100,7 @@ export const PageProduct = () => {
             {product &&
                 <div className="flex   md:hidden mr-2 ml-2 flex-col items-center relative">
                     <div className="mt-2 flex flex-col items-center justify-center">
+                        {product.id}
                         <div>
                             <a href="/loja" className="text-sm text-[#C81A78] font-bold ">Vinhos</a>
                             <span className="text-[15px] text-[#888] mr-2 ml-2 inline-block">&gt;</span>

@@ -5,11 +5,13 @@ import { FilterPrice } from "../components/Filters/FilterPrice";
 import UsePagination from "../components/Pagination/UsePagination";
 import { getProductSearch } from "../services/api";
 import useGetProducts from "../hooks/useGetProducts";
+import LoadMoreButton from "../components/Pagination/LoadMoreButton";
 
 
 
 export const Search = () => {
 
+  const isMobile = window.innerWidth > 768 ? false : true;
   const GetProductsSearch = () => useGetProducts(getProductSearch);
 
   const {
@@ -63,10 +65,16 @@ export const Search = () => {
 
         </div>
 
-        {totalPages > 0 &&
+        {isMobile && totalPages > 0 &&
+          <>
+            <LoadMoreButton totalPages={totalPages} onClick={handlePageChange} />
+            <p className="text-[#888888] text-lg text-center mt-2 mb-7">Exibindo <strong className="text-[#1D1D1B] text-lg font-bold">{products?.length}</strong> de <strong className="text-[#1D1D1B] text-lg font-bold">{totalItems}</strong>  produtos no total </p>
+          </>
 
+        }
+
+        {!isMobile && totalPages > 0 &&
           <UsePagination totalPages={totalPages} activePage={pageActive} onClick={handlePageChange} />
-
         }
 
       </div>

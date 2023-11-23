@@ -27,7 +27,7 @@ export const getProducts = async (pageActive:number):Promise<getProductType> => 
 
     const url = `/products?page=${pageActive}&limit=${limit}`;
 
- 
+    console.log(pageActive)
     try {
         const result = await api.get(url);
         return result.data;

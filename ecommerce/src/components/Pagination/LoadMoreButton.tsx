@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const StyledButton = styled(Button)({
   padding: '5px',
@@ -9,29 +9,37 @@ const StyledButton = styled(Button)({
 });
 
 type Props = {
-  onLoadMore: (pageActive: number) => void;
-  totalPages: number;
+  totalPages: number
+  
+  onClick: (newPage: number) => void
 };
 
-export default function LoadMoreButton({ onLoadMore, totalPages }: Props) {
+export default function LoadMoreButton({ totalPages, onClick }: Props) {
   const [pageActive, setPageActive] = useState(1);
-
-  useEffect(() => {
-    
-  }, [pageActive]);
-
+  
   const handleLoadMore = () => {
     if (pageActive < totalPages) {
+     setPageActive(pageActive + 1)
       
-      onLoadMore(pageActive + 1);
-      setPageActive((prevPage) => prevPage + 1);
+     onClick(pageActive + 1)
     }
+
+  
   };
 
+
+  
+
   return (
-    <div className="w-full flex items-center justify-center mt-8 rounded border-2 border-[#C81A78]">
+    <div className="w-full flex items-center justify-center mt-8 rounded">
       <StyledButton
-        style={{width: '100%'}}
+        style={{
+          width: '100%', 
+          border: pageActive >= totalPages ? '1px solid #888' : '2px solid #C81A78' , 
+          borderRadius: '4px', 
+          padding: '8px'
+        }}
+
         onClick={handleLoadMore}
         type="button"
         disabled={pageActive >= totalPages}
