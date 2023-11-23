@@ -29,8 +29,9 @@ export default function LoadMoreButton({ onLoadMore, totalPages }: Props) {
   };
 
   return (
-    <div className="w-full flex items-center justify-center">
+    <div className="w-full flex items-center justify-center mt-8 rounded border-2 border-[#C81A78]">
       <StyledButton
+        style={{width: '100%'}}
         onClick={handleLoadMore}
         type="button"
         disabled={pageActive >= totalPages}
