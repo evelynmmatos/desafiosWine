@@ -6,18 +6,23 @@ import { FilterPrice } from "../components/Filters/FilterPrice";
 
 
 import UsePagination from "../components/Pagination/UsePagination";
-import useGetProductsFilter from "../hooks/useGetProductsFilter";
+import { getProductsFilter } from "../services/api";
+import useGenericProducts from "../hooks/useGetProducts";
+
 
 export const Price = () => {
+
+  const GetProductsFilter = () => useGenericProducts(getProductsFilter);
+
   const {
-    products, 
-    isLoading, 
-    handlePageChange, 
-    pageActive, 
-    totalPages, 
-    totalItems
-    
-  } = useGetProductsFilter()
+    products,
+    pageActive,
+    totalPages,
+    totalItems,
+    handlePageChange,
+    isLoading,
+
+  } = GetProductsFilter();
 
   return (
 

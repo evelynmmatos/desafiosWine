@@ -2,23 +2,24 @@ import { CardProduct } from "../components/CardProduct";
 import { FilterPrice } from "../components/Filters/FilterPrice";
 import { ProductNotFind } from "../components/ProductNotFind";
 import { SkeletonLoadingHome } from "../components/SkeletonLoading/SkeletonLoadingHome";
-
-import useGetProducts from "../hooks/useGetProducts";
 import UsePagination from "../components/Pagination/UsePagination";
+
+import { getProducts } from "../services/api";
+import useGetProducts from "../hooks/useGetProducts";
 
 export const Home = () => {
 
-  
+  const GetProductsAll = () => useGetProducts(getProducts);
 
   const {
     products,
-    isLoading,
-    handlePageChange,
     pageActive,
     totalPages,
-    totalItems
+    totalItems,
+    handlePageChange,
+    isLoading,
 
-  } = useGetProducts()
+  } = GetProductsAll();
 
   return (
 

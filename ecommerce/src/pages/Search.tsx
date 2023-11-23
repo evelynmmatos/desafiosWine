@@ -2,25 +2,25 @@ import { SkeletonLoadingHome } from "../components/SkeletonLoading/SkeletonLoadi
 import { ProductNotFind } from "../components/ProductNotFind";
 import { CardProduct } from "../components/CardProduct";
 import { FilterPrice } from "../components/Filters/FilterPrice";
-
-import useGetProductsSearch from "../hooks/useGetProductsSearch";
 import UsePagination from "../components/Pagination/UsePagination";
+import { getProductSearch } from "../services/api";
+import useGetProducts from "../hooks/useGetProducts";
 
 
 
 export const Search = () => {
 
+  const GetProductsSearch = () => useGetProducts(getProductSearch);
+
   const {
     products,
-    isLoading,
-    handlePageChange,
     pageActive,
     totalPages,
-    totalItems
+    totalItems,
+    handlePageChange,
+    isLoading,
 
-  } = useGetProductsSearch()
-
-
+  } = GetProductsSearch();
 
   return (
 
