@@ -6,6 +6,7 @@ import UsePagination from "../components/Pagination/UsePagination";
 import LoadMoreButton from "../components/Pagination/LoadMoreButton";
 import useGetProductsSearch from "../hooks/useGetProductsSearch";
 import { getProductsSearch } from "../services/api";
+import ChipsFilters from "../components/Chips/chipsFilters";
 
 
 
@@ -21,6 +22,8 @@ export const Search = () => {
     totalItems,
     handlePageChange,
     isLoading,
+    keyword,
+    KeyPrice,
 
   } = GetProductsSearch();
 
@@ -37,16 +40,20 @@ export const Search = () => {
         {isLoading && <SkeletonLoadingHome />}
 
         {products?.length === 0 && <ProductNotFind />}
-
+        
         {totalItems > 0 &&
-          <div className="w-full mb-5 text-lg border-b border-[rgba(213, 213, 213, 1)] md:border-none">
-            <span className=" text-[#262626]  "><strong>{totalItems}</strong> produtos encontrados</span>
-          </div>
-
+          <>
+            <div className="w-full mb-5 text-lg border-b border-[rgba(213, 213, 213, 1)] md:border-none">
+              <span className=" text-[#262626] inline-block "><strong>{totalItems}</strong> produtos encontrados</span>
+              <ChipsFilters search={keyword} price={KeyPrice}/>
+            </div>
+          </>
         }
 
-        <div className="w-full grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-8 mt-8">
+        
 
+        <div className="w-full grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-8 mt-8">
+       
           {products && products.map((product, index) => (
             <CardProduct
               key={index}

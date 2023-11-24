@@ -13,7 +13,7 @@ const useGetProductsSearch = (fetchFunction: FetchFunction) => {
   const [totalPages, setTotalPages] = useState(1);
   const [totalItems, setTotalItems] = useState(0);
   const [products, setProducts] = useState<Product[]>([]);
-  const keyword = searchParams.get("q");
+  const keyword = searchParams.get("keyword");
   const KeyPrice = searchParams.get("keyprice");
 
     
@@ -64,6 +64,8 @@ const useGetProductsSearch = (fetchFunction: FetchFunction) => {
     handlePageChange,
     fetchProducts,
     isLoading,
+    keyword,
+    KeyPrice
   };
 };
 
