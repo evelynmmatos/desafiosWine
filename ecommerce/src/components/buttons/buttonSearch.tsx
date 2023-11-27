@@ -37,10 +37,10 @@ export default function ButtonSearch(){
         const KeyPrice = searchParams.get("keyprice");
 
         if(KeyPrice != null){
-            navigate(`/loja/search?keyword=${inputSearch}&keyprice=${KeyPrice}`);
+            navigate(`/loja/search?pg=1&keyword=${inputSearch}&keyprice=${KeyPrice}`);
         }else {
             dispatch(setPrice(''))
-            navigate(`/loja/search?keyword=${inputSearch}&keyprice=all`);
+            navigate(`/loja/search?pg=1&keyword=${inputSearch}&keyprice=all`);
         }
 
         

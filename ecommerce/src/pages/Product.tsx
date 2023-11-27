@@ -9,9 +9,12 @@ import { formatarNumero } from "../hooks/formatter";
 
 import addProductCart from "../hooks/addProductCart";
 import useGetProductId from "../hooks/useGetProductId";
+import { useNavigate } from "react-router-dom";
 
 
 export const PageProduct = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { product, isLoading, productNotFind } = useGetProductId();
 
@@ -27,12 +30,15 @@ export const PageProduct = () => {
         }
     };
 
-    const dispatch = useDispatch();
+    //Adicionar ao carrinho
 
     const adicionarAoCarrinho = (idProduct: number, quantidade: number) => {
         addProductCart(idProduct, dispatch, quantidade);
     };
 
+    const handleBackPage = () => {
+        navigate(-1)
+    }
 
     return (
         <>
@@ -41,7 +47,7 @@ export const PageProduct = () => {
             {product &&
 
                 <div className="hidden md:flex w-full relative mt-8 mb-8  ">
-                    <a href="/loja" className="text-xl text-[#e43fa0] absolute mt-[-50px] "> &lt; VOLTAR </a>
+                    <button onClick={handleBackPage} className="text-xl text-[#e43fa0] absolute mt-[-50px] "> &lt; VOLTAR </button>
                     <div className="w-full flex justify-between ">
                         <div className="flex-1    justify-center">
                             <img src={product?.image} alt="" className="w-[345px] h-[524px]" />

@@ -1,6 +1,8 @@
 
 import usePagination from '@mui/material/usePagination';
 import { styled } from '@mui/material/styles';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+
 
 const List = styled('ul')({
   listStyle: 'none',
@@ -19,11 +21,20 @@ type Props = {
 
 export default function UsePagination({totalPages, activePage, onClick}:Props) {
   const isMobile = window.innerWidth < 768;
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const keyword = searchParams.get("keyword");
+  const KeyPrice = searchParams.get("keyprice");
 
   const handlePageClick = (newPage: number) => {
-    // Faça qualquer processamento necessário e, em seguida, chame a função de retorno de chamada
+    
     onClick(newPage);
-
+    if(keyword || KeyPrice){
+      navigate(`/loja/search?pg=${newPage}&keyword=${keyword}&keyprice=${KeyPrice}`)
+    }else {
+      navigate(`/loja?pg=${newPage}`)
+    }
   };
   
   

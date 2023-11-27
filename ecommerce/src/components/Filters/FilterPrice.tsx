@@ -23,6 +23,7 @@ export const FilterPrice = () => {
     const [searchParams] = useSearchParams();
 
     const KeyWord = searchParams.get("keyword");
+    const keyPage = searchParams.get("pg") || 1;
 
     const handleFaixaPrecoChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
         const value = event.target.value;
@@ -33,8 +34,9 @@ export const FilterPrice = () => {
         if (value === faixaPreco) {
 
             if(KeyWord){
-                navigate(`/loja/search?keyword=${KeyWord}&keyprice=all`);
-            }
+                navigate(`/loja/search?pg=1&keyword=${KeyWord}&keyprice=all`);
+            } 
+            
             
             
         }
@@ -45,9 +47,9 @@ export const FilterPrice = () => {
     useEffect(() => {
         if (filterPreco !== '') {
             if(KeyWord != null){
-                navigate(`/loja/search?keyword=${KeyWord}&keyprice=${filterPreco}`);
+                navigate(`/loja/search?pg=1&keyword=${KeyWord}&keyprice=${filterPreco}`);
             }else {
-                navigate(`/loja/search?keyword=all&keyprice=${filterPreco}`);
+                navigate(`/loja/search?pg=1&keyword=all&keyprice=${filterPreco}`);
             }
             
         }
