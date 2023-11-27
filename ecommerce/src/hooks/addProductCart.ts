@@ -20,7 +20,7 @@ const addProductCart = async (idProduct: number, dispatch: any, quantidade: numb
         localStorage.setItem('produtos', JSON.stringify(listaProdutos));
 
         dispatch(setProduct(listaProdutos));
-        alert(`Produto Adicionado (${quantidade} unidades)`);
+        //alert(`Produto Adicionado (${quantidade} unidades)`);
 
       } else {
         console.error('Produto não encontrado na API.');
@@ -41,7 +41,7 @@ const addProductCart = async (idProduct: number, dispatch: any, quantidade: numb
         localStorage.setItem('produtos', JSON.stringify(listaProdutos));
 
         dispatch(setProduct(listaProdutos));
-        alert(`Produto Adicionado (${quantidade} unidades)`);
+        //alert(`Produto Adicionado (${quantidade} unidades)`);
       } else {
         console.error('Produto não encontrado na API.');
       }
