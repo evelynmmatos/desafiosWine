@@ -24,12 +24,12 @@ export default function ChipsFilters({price, search}: ChipsType) {
   const handleDelete = (type: string) => {
     
     if(type == 'search'){
-        navigate(`/loja/search?pg-1&keyword=all&keyprice=${KeyPrice}`);
+        navigate(`/loja/search?pg=1&keyword=all&keyprice=${KeyPrice}`);
     }
 
     if(type == 'price'){
         dispatch(setPrice(''))
-        navigate(`/loja/search?pg-1&keyword=${KeyWord}&keyprice=all`);
+        navigate(`/loja/search?pg=1&keyword=${KeyWord}&keyprice=all`);
     }
 
   }
