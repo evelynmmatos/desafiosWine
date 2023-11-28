@@ -1,5 +1,6 @@
-import axios from "axios";
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
+import axios from "axios";
 import { Product } from "../types/types";
 import { getAllProductsFile, getProductsFile } from "./mockProducts";
 import Mockproducts from "./Products";
@@ -96,7 +97,7 @@ export const getProductsSearch = async (pageActive:number, keyWord: string, keyP
         const result = await api.get(url);
         return result.data;
     } catch (error) {
-        throw new Error(`Erro na requisição: ${error.message}`);
+        throw new Error(`Erro na requisição: `);
     }
     
 }
