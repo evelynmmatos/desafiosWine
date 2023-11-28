@@ -31,32 +31,29 @@ export const FilterPrice = () => {
         dispatch(setPrice(value === filterPreco ? '' : value))
 
         if (value === faixaPreco) {
-
+            
             if(KeyWord){
+                
                 navigate(`/loja/search?pg=1&keyword=${KeyWord}&keyprice=all`);
-            } 
+            }else{
+                
+                navigate(`/loja/search?pg=1&keyword=all&keyprice=all`)
+            }
               
             
-        }
-
-    };
-
-    useEffect(() => {
-
-        
-        if(filterPreco !== ''){
+        }else if(value !== '' ){
           
             if(KeyWord != null){
-                navigate(`/loja/search?pg=1&keyword=${KeyWord}&keyprice=${filterPreco}`);
+                navigate(`/loja/search?pg=1&keyword=${KeyWord}&keyprice=${value}`);
             }else {
-                navigate(`/loja/search?pg=1&keyword=all&keyprice=${filterPreco}`);
+                navigate(`/loja/search?pg=1&keyword=all&keyprice=${value}`);
             }
 
             
 
         }
 
-    }, [filterPreco])
+    };
 
 
     useEffect(() => {
