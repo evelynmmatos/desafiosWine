@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { setProduct } from '../Redux/reducers/cartReducer';
 import { getAllProducts } from '../services/api';
 import { Product } from '../types/types';
@@ -13,7 +15,7 @@ const removeProductCart = async (idProduct: number, dispatch: any, quantidade: n
 
   try {
     const result = await getAllProducts();
-    const itemRemover = result.items.find((item) => item.id === idProduct);
+    const itemRemover = result.items.find((item : Product) => item.id === idProduct);
 
     if (itemRemover) {
       // Filtra os produtos a serem removidos com base na quantidade

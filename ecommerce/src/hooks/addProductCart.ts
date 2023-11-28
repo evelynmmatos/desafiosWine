@@ -1,17 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { setProduct } from '../Redux/reducers/cartReducer';
 import { getAllProducts } from '../services/api';
+import { Product } from '../types/types';
 
 const addProductCart = async (idProduct: number, dispatch: any, quantidade: number = 1) => {
   
   const storedProdutos: string | null = localStorage.getItem('produtos');
-  let listaProdutos = storedProdutos ? JSON.parse(storedProdutos) : [];
+  let listaProdutos: Product[] = storedProdutos ? JSON.parse(storedProdutos) : [];
 
   
   if (listaProdutos.length === 0) {
     
     try {
       const result = await getAllProducts();
-      const itemAdicionar = result.items.find((item) => item.id === idProduct);
+      const itemAdicionar = result.items.find((item: Product) => item.id === idProduct);
 
       
       if (itemAdicionar) {
@@ -33,7 +35,7 @@ const addProductCart = async (idProduct: number, dispatch: any, quantidade: numb
    
     try {
       const result = await getAllProducts();
-      const itemAdicionar = result.items.find((item) => item.id === idProduct);
+      const itemAdicionar = result.items.find((item: Product) => item.id === idProduct);
 
       
       if (itemAdicionar) {
