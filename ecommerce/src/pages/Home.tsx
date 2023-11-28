@@ -7,6 +7,7 @@ import LoadMoreButton from "../components/Pagination/LoadMoreButton";
 
 import { getProducts } from "../services/api";
 import useGetProducts from "../hooks/useGetProducts";
+import LoadingMobile from "../components/SkeletonLoading/LoadingMobile";
 
 export const Home = () => {
 
@@ -34,9 +35,10 @@ export const Home = () => {
       </aside>
 
       <div className="flex-1 w-full">
-        {isLoading && <SkeletonLoadingHome />}
+        {!isMobile && isLoading && <SkeletonLoadingHome />}
+        {isMobile && isLoading && products.length === 0 && <LoadingMobile />}
 
-        {products?.length === 0 && <ProductNotFind />}
+        {!isLoading && products?.length === 0 && <ProductNotFind />}
 
         {totalItems > 0 &&
           <div className="w-full mb-5 text-lg border-b border-[rgba(213, 213, 213, 1)] md:border-none">
@@ -65,7 +67,7 @@ export const Home = () => {
 
 
 
-        {isMobile && totalPages > 0 &&
+        { isMobile && totalPages > 0 &&
           <>
             <LoadMoreButton totalPages={totalPages}  onClick={handlePageChange} />
             <p className="text-[#888888] text-lg text-center mt-2 mb-7">Exibindo <strong className="text-[#1D1D1B] text-lg font-bold">{products?.length}</strong> de <strong  className="text-[#1D1D1B] text-lg font-bold">{totalItems}</strong>  produtos no total </p>
@@ -73,7 +75,7 @@ export const Home = () => {
           
         }
 
-        {!isMobile && totalPages > 0 &&
+        {!isLoading && !isMobile && totalPages > 0 &&
           <UsePagination totalPages={totalPages} activePage={pageActive} onClick={handlePageChange} />
         }
 

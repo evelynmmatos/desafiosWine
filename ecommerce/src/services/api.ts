@@ -1,9 +1,14 @@
 import axios from "axios";
+
 import { Product } from "../types/types";
+import { getAllProductsFile, getProductsFile } from "./mockProducts";
+import Mockproducts from "./Products";
 
 export const api = axios.create({
     baseURL: 'http://localhost:3000'
 })
+
+
 
 
 type getProductType = {
@@ -15,9 +20,25 @@ type getProductType = {
 
 }
 
-export const getAllProducts =  async ():Promise<getProductType> => {
-    const result = await api.get('/products')
-    return result.data
+export const getAllProducts =  async ():Promise<any> => {
+   
+    try{
+        const result = await api.get('/products')
+        return result.data
+    }catch (error){
+        const listProducts = await getAllProductsFile()
+        const data = {
+            page: 1,
+            totalPages: 1,
+            itemsPerPage: listProducts.length,
+            totalItems: listProducts.length,
+            items: listProducts
+        }
+
+        return data
+       
+    }
+    
 }
 
 
@@ -26,7 +47,7 @@ export const getAllProducts =  async ():Promise<getProductType> => {
 const limit = window.innerWidth > 768 ? 9 : 8;
 
 
-export const getProducts = async (pageActive:number):Promise<getProductType> => {
+export const getProducts = async (pageActive:number):Promise<any> => {
 
     const url = `/products?page=${pageActive}&limit=${limit}`;
 
@@ -35,7 +56,21 @@ export const getProducts = async (pageActive:number):Promise<getProductType> => 
         const result = await api.get(url);
         return result.data;
     } catch (error) {
-        throw new Error(`Erro na requisição: ${error.message}`);
+
+        const listProducts = await getProductsFile(limit)
+        
+
+        const data = {
+            page: pageActive,
+            totalPages:listProducts.length,
+            itemsPerPage: listProducts[pageActive].length,
+            totalItems: Mockproducts.length,
+            items: listProducts[pageActive -1]
+        }
+
+        return data
+    
+      
     }
     
 }
