@@ -18,7 +18,7 @@ export const useGetProductId = () => {
 
         try {
             const result = await getAllProducts();
-            const item = result.items.find((item) => item.id === idProduct);
+            const item = result.items.find((item: Product) => item.id === idProduct);
 
             if (item) {
                 setProduct(item);
