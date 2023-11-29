@@ -16,37 +16,15 @@ export const AppRoutes = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/"
-                    element={<App />}
-                >
-                    <Route
-                        index
-                        element={<Home />}
-                    />
-                    <Route
-                        path="/loja"
-                        element={<Home />}
-                    />
-                    <Route
-                        path="/loja/vinhos/:id"
-                        element={<PageProduct />}
-                    />
-                    <Route
-                        path="/vinhos/:id"
-                        element={<PageProduct />}
-                    />
-                    <Route
-                        path="/loja/search"
-                        element={<Search />}
-                    />
-                    <Route
-                        path="*"
-                        element={<NotFound />}
-                    />
+                <Route path="/" element={<App />}>
+                <Route index element={<Home />} />
+                <Route path="loja" element={<Home />} />
+                <Route path="loja/vinhos/:id" element={<PageProduct />} />
+                <Route path="vinhos/:id" element={<PageProduct />} />
+                <Route path="loja/search" element={<Search />} />
+                <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
-
-        </BrowserRouter>
+         </BrowserRouter>
     );
-};
+  };
