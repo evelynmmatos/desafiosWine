@@ -8,7 +8,7 @@ export const getAllProductsFile = () => {
 
 
 
-export const getProductsFile = (limit: number) => {
+export const getProductsFile = (limit: number, pageActive: number) => {
     const grupos = [];
 
     let i = 0;
@@ -26,7 +26,11 @@ export const getProductsFile = (limit: number) => {
 
     grupos.push(grupo)
 
-    return grupos
+    console.log(grupos)
+    console.log(grupos[pageActive-1])
+    console.log(pageActive - 1)
+
+    return grupos[pageActive-1]
 }
 
 

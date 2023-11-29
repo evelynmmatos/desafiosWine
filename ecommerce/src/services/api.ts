@@ -58,15 +58,15 @@ export const getProducts = async (pageActive:number):Promise<any> => {
         return result.data;
     } catch (error) {
 
-        const listProducts = await getProductsFile(limit)
+        const listProducts =  getProductsFile(limit, pageActive)
         
 
         const data = {
             page: pageActive,
-            totalPages:listProducts.length,
-            itemsPerPage: listProducts[pageActive].length,
+            totalPages:Math.round(Mockproducts.length / limit),
+            itemsPerPage: listProducts.length,
             totalItems: Mockproducts.length,
-            items: listProducts[pageActive -1]
+            items: listProducts
         }
 
         return data
