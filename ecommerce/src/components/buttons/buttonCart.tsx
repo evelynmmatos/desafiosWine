@@ -101,11 +101,11 @@ const calcularTotalCarrinho = () => {
 
   const list = (anchor: Anchor) => (
     <div
-
+     
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <div className=" w-[350px] h-screen  flex flex-col relative items-center  overflow-hidden">
+      <div data-testid='cart-container' className=" w-[350px] h-screen  flex flex-col relative items-center  overflow-hidden">
         <span className='h-[52px] mt-2 text-lg'>WINE BOX</span>
 
         <div className='overflow-y-scroll w-full h-full p-5'>
@@ -158,12 +158,13 @@ const calcularTotalCarrinho = () => {
 
       <div className="w-[45px] h-[45px]  md:w-11 md:h-11 lg:w-14 lg:h-14  flex items-center justify-center md:ml-6 lg:ml-11 " onClick={toggleDrawer('right', true)}>
         <div className=" w-full h-full rounded-full  bg-[#F6B554] flex items-center justify-center over hover:cursor-pointer">
-          <img src={ImageCart} alt="" className=" w-[33px] md:w-[30px] lg:w-auto rounded-b-[14px]" />
-          <span className="w-4 h-4 rounded-full flex items-center justify-center text-[#4FBFA5]  bg-[#F5F5F5] absolute ml-8 mt-10">{Cart.length}</span>
+          <img src={ImageCart} alt="Cart Icon" className=" w-[33px] md:w-[30px] lg:w-auto rounded-b-[14px]" />
+          <span data-testid="cart-quantity" className="w-4 h-4 rounded-full flex items-center justify-center text-[#4FBFA5]  bg-[#F5F5F5] absolute ml-8 mt-10">{Cart.length}</span>
         </div>
       </div>
 
       <SwipeableDrawer
+       
         anchor="right"
         open={state.right}
         onClose={toggleDrawer('right', false)}

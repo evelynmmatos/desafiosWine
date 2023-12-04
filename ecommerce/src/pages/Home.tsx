@@ -43,7 +43,7 @@ export const Home = () => {
         {totalItems > 0 &&
           <div className="w-full mb-5 text-lg border-b border-[rgba(213, 213, 213, 1)] md:border-none">
             <span className=" text-[#262626]  ">
-              <strong>{totalItems}</strong> produtos encontrados
+              <strong data-testid='findProducts'>{totalItems}</strong> produtos encontrados
             </span>
           </div>
         }

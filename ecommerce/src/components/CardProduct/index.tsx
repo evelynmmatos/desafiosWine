@@ -35,7 +35,7 @@ export const CardProduct = ({id, image, flag, title, price, discount, priceMembe
    
     
     return (
-        <div className="w-40 md:w-56 lg:w-64 h-[387px] flex flex-col justify-center">
+        <div data-testid='product-container' className="w-40 md:w-56 lg:w-64 h-[387px] flex flex-col justify-center">
             <div className="w-full h-[333px]  bg-white shadow-lg flex flex-col items-center justify-center pt-6 pb-6 cursor-pointer" id={id.toString()} onClick={() => handleNavigate(id)} >
                 <div className="flex">
                     <img src={image} alt={title} className="md:ml-7 md:mr-7 h-44"/>
