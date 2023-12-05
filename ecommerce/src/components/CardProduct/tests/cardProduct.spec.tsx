@@ -19,10 +19,7 @@ jest.mock('react-redux', () => ({
   useDispatch: jest.fn(),
 }));
 
-jest.mock('../../../hooks/addProductCart.ts', () => ({
-  __esModule: true,
-  default: jest.fn(),
-}));
+jest.mock('../../../hooks/addProductCart.ts');
 
 describe('CardProduct', () => {
   beforeEach(() => {
@@ -38,7 +35,7 @@ describe('CardProduct', () => {
 
     (useDispatch as jest.Mock).mockReturnValue(mockDispatch);
     (useNavigate as jest.Mock).mockReturnValue(mockNavigate);
-    (addProductCart as jest.Mock).mockImplementation(jest.fn());
+    (addProductCart as jest.Mock).mockImplementation(mockAddProductCart);
 
     // Propriedades do produto
     const productProps = {
@@ -65,10 +62,9 @@ describe('CardProduct', () => {
     expect(screen.getByTestId('product-container')).toBeInTheDocument();
     expect(screen.getByText('Mock Product')).toBeInTheDocument();
 
-    
 
     // Simular clique no botão ADICIONAR
-    userEvent.click(screen.getByText('ADICIONAR'));
+    userEvent.click( screen.getByRole('button', { name: /adicionar/i }));
 
     // Verificar se a função de adicionar ao carrinho foi chamada corretamente
     await waitFor(() => {
