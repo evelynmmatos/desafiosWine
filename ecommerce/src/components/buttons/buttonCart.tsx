@@ -126,10 +126,10 @@ const calcularTotalCarrinho = () => {
               <div className='flex justify-between'>
                 <div className='w-12 px-1 flex items-center justify-around rounded border border-[#ccc]'>
                   <button onClick={() => handleRemoveItem(product.item.id, 1)}>-</button>
-                  <p className='text-xs'>{product.quantity}</p>
+                  <p data-testid='qtd-item' className='text-xs'>{product.quantity}</p>
                   <button onClick={() => adicionarAoCarrinho(product.item.id, (1))}>+</button>
                 </div>
-                <span className='text-lg font-bold text-[#C81A78]'>R$: {formatarNumero(product.quantity * product.item.priceMember)}</span>
+                <span data-testid='total-item' className='text-lg font-bold text-[#C81A78]'>R$: {formatarNumero(product.quantity * product.item.priceMember)}</span>
               </div>
             </div>
           </div>
@@ -140,9 +140,9 @@ const calcularTotalCarrinho = () => {
         <div className=' w-full h-40  flex flex-col justify-between bottom-0 p-3 border-t-[1px] border-[#D5D5D5] shadow shadow-[rgba(0, 0, 0, 0.35)]'>
           <div className='w-full flex justify-around items-center'>
             <p className='text-base font-bold '>Valor total: </p>
-            <span className='text-2xl font-bold text-[#C81A78]'>R$: {calcularTotalCarrinho()}</span>
+            <span  className='text-2xl font-bold text-[#C81A78]'>R$: {calcularTotalCarrinho()}</span>
           </div>
-          <button className='w-full h-12 text-white bg-[#7EBC43]  rounded'>Ir para Pagamento</button>
+          <button data-testid='total-cart' className='w-full h-12 text-white bg-[#7EBC43]  rounded'>Ir para Pagamento</button>
         </div>
       </div>
 
