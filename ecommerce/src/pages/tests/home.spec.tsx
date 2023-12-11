@@ -72,7 +72,7 @@ describe("Home", () => {
 
         const skeletonLoading = screen.getByTestId('skeletonLoading');
         expect(skeletonLoading).toBeVisible();
-        screen.logTestingPlaygroundURL()
+        
         
     })
 })
