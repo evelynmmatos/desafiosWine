@@ -7,8 +7,8 @@ import { store } from "../../../store/store";
 
 
 jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useNavigate: jest.fn(),
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: jest.fn(),
 }));
 
 const mockNavigate = jest.fn();
@@ -68,45 +68,33 @@ describe('FilterPrice Component', () => {
     });
 
 
-    it("Shoud render links", async() => {
-    
-        //Arrange
+    it("Shoud render links", async () => {
+
+        // Arrange
         renderComponent();
         const openButton = screen.getByTestId('openButton');
 
-        //Act
+        // Act
         fireEvent.click(openButton);
 
-        //Arrange
-        const buttonEntrar = screen.getByRole('link', {name: /entrar →/i});
-        const buttonClube = screen.getByRole('link', {name: /clube/i});
-        const buttonLoja = screen.getByRole('link', {name: /loja/i});
-        const buttonProdutores = screen.getByRole('link', {name: /produtores/i});
-        const buttonOfertas = screen.getByRole('link', {name: /ofertas/i});
-        const buttonEventos = screen.getByRole('link', {name: /eventos/i});
+        // Arrange
+        const linksData = [
+            { name: /entrar →/i, href: '/user' },
+            { name: /clube/i, href: '/clube' },
+            { name: /loja/i, href: '/loja' },
+            { name: /produtores/i, href: '/produtores' },
+            { name: /ofertas/i, href: '/ofertas' },
+            { name: /eventos/i, href: '/eventos' },
+        ];
 
-       //Assertions
+        // Assertions
+        linksData.forEach((link) => {
+            const button = screen.getByRole('link', { name: link.name });
 
-       expect(buttonEntrar).toBeVisible();
-       expect(buttonClube).toBeVisible();
-       expect(buttonLoja).toBeVisible();
-       expect(buttonProdutores).toBeVisible();
-       expect(buttonOfertas).toBeVisible();
-       expect(buttonEventos).toBeVisible();
+            expect(button).toBeVisible();
+            expect(button).toHaveAttribute('href', link.href);
+        });
 
-       const link = screen.getByText("Clube");
-
-       // Simule o clique no link
-       fireEvent.click(link);
-     
-       // Verifique se a URL mudou
-       
-       
-       await waitFor(() => {
-        expect(window.location.pathname).toBe("/clube");
-       })
-
-        
-    });
+    })
 
 })
