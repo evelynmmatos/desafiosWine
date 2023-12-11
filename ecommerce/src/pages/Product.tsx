@@ -77,8 +77,8 @@ export const PageProduct = () => {
                             </ul>
 
                             <div className="mt-8">
-                                <p className="text-2xl font-black text-[#C81A78] ">R$ <span className="text-[40px] font-black text-[#C81A78]">{formatarNumero(product.priceMember)}</span></p>
-                                <p className="text-[#888] text-base uppercase">Não Sócio R$ {formatarNumero(product?.price as number)}/UN</p>
+                                <p data-testid='pricemember' className="text-2xl font-black text-[#C81A78] ">R$ <span className="text-[40px] font-black text-[#C81A78]">{formatarNumero(product.priceMember)}</span></p>
+                                <p data-testid='priceNoMember' className="text-[#888] text-base uppercase">Não Sócio R$ {formatarNumero(product?.price as number)}/UN</p>
                             </div>
 
                             <div className="mt-8 w-[448px]">
@@ -88,7 +88,7 @@ export const PageProduct = () => {
 
                             <div className="flex mt-8 mb-8 w-[328px] h-14 rounded bg-[#7EBC43] items-center justify-around">
                                 <button className="w-7 h-7 border border-white text-white p-1 rounded-full flex items-center justify-center disabled:border-[#ffffff19]" onClick={diminuirQuantidade} disabled={quantidade === 1}>-</button>
-                                <p className="text-white">{quantidade}</p>
+                                <p data-testid='quantidadeItens' className="text-white">{quantidade}</p>
                                 <button className="w-7 h-7 border border-white text-white p-1 rounded-full flex items-center justify-center" onClick={aumentarQuantidade}>+</button>
                                 <button className="text-white" onClick={() => adicionarAoCarrinho(product.id, quantidade)}>Adicionar</button>
                             </div>
