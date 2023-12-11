@@ -44,7 +44,7 @@ export const Search = () => {
         {totalItems > 0 &&
           <>
             <div className="w-full mb-5 text-lg border-b border-[rgba(213, 213, 213, 1)] md:border-none">
-              <span className=" text-[#262626] inline-block "><strong>{totalItems}</strong> produtos encontrados</span>
+              <span data-testid='findProducts' className=" text-[#262626] inline-block "><strong>{totalItems}</strong> produtos encontrados</span>
               <ChipsFilters search={keyword} price={KeyPrice}/>
             </div>
           </>
