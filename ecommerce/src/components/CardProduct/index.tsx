@@ -47,8 +47,10 @@ export const CardProduct = ({id, image, flag, title, price, discount, priceMembe
                     <p className="inline-block text-white text-[10px] font-bold bg-[#F79552] rounded-sm p-[2px]">{discount}% OFF</p>
                 </div>
                 
-                <div className="w-36 mt-2">
-                    <p className=" text-[#1D1D1B] text-center uppercase text-[11px] font-bold">Sócio Wine <p className="text-[#B6116E] inline-block"> R$ </p><span className="text-lg text-[#B6116E]"> {formatarNumero(priceMember)}</span></p>
+                <div className="w-40 mt-2 text-center">
+                    <p className=" text-[#1D1D1B] text-center uppercase text-[11px] font-bold inline-flex mr-1">Sócio Wine </p>
+                    <span className="text-[#B6116E]  inline-flex"> R$ </span>
+                    <span className="text-lg text-[#B6116E] inline-flex"> {formatarNumero(priceMember)}</span>
                     <p className="text-[#888] text-[11px] text-center font-bold uppercase mt-2">Não Sócio R$ {formatarNumero(priceNonMember)}</p>
                 </div>
                 
