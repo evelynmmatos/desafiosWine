@@ -64,7 +64,7 @@ describe("Home", () => {
     })
 
     
-    it("renders Home component with no is loading true", async () => {
+    it("renders Home component with isloading true", async () => {
         const mockNoProductsData = { ...mockProductsData, products: [], totalPages: 0, pageActive: 0, totalItems: 0 , isLoading: true};
         (useGetProducts as jest.Mock).mockReturnValue(mockNoProductsData);
 
@@ -75,5 +75,6 @@ describe("Home", () => {
         
         
     })
+
 })
 

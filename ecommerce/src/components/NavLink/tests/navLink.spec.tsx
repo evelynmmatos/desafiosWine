@@ -1,13 +1,11 @@
 import { Provider } from "react-redux";
 import { store } from "../../../store/store";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, MemoryRouter } from "react-router-dom";
 import { NavLink } from "..";
 import { render, screen, waitFor} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 
-
-// Propriedades do produto
 type navLinkProps = {
     to: string,
     label: string,
@@ -16,16 +14,13 @@ type navLinkProps = {
 };
 
 const mockOnClick = jest.fn();
-// Renderizar componente
 
 const renderComponent = ({ to, label, onClick, activeLink }: navLinkProps) => {
 
     render(
-        <Provider store={store}>
-            <BrowserRouter>
-                <NavLink to={to} label={label} onClick={onClick} activeLink={activeLink} />
-            </BrowserRouter>
-        </Provider>
+        
+       <NavLink to={to} label={label} onClick={onClick} activeLink={activeLink} />
+          
     );
 }
 

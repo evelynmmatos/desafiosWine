@@ -1,4 +1,4 @@
-import { render, screen, waitFor, } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { store } from "../../store/store";
 import { BrowserRouter, useNavigate } from "react-router-dom";
@@ -201,6 +201,16 @@ describe("Page Product", () => {
         expect(priceNoMember).toBeVisible()
 
 
+    })
+
+    it("Shoud add product in cart version mobile", () => {
+        renderComponent();
+
+        const addCart = screen.getAllByRole('button', { name: /Adicionar/i });
+
+        fireEvent.click(addCart[1])
+
+        expect(mockAddProductCart).toHaveBeenCalledWith(1, mockDispatch, 1)
     })
 
 

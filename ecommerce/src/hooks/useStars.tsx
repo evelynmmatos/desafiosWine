@@ -9,7 +9,7 @@ export const UseStars = ({rating}: Props) => {
 
     //Verifica se não é indefinido
     if(rating == undefined){
-        return <div></div>
+        return <div>Sem classificação</div>
     }
   // Verifica se é um número válido
   if (isNaN(rating) || rating < 0 || rating > 5) {
@@ -29,7 +29,7 @@ export const UseStars = ({rating}: Props) => {
       ))}
 
        {emptyStars.map((star) => (
-            <img src={ImageStarEmpty} alt="estrela" key={star} />
+            <img src={ImageStarEmpty} alt="estrela vazia" key={star} />
       ))}
 
       <p className="inline-block mr-2 ml-2 text-sm text-[#555]">({rating})</p>
