@@ -64,7 +64,7 @@ function App() {
           <div className="hidden w-11 h-11 lg:w-14 lg:h-14  md:flex items-center justify-center md:ml-6 lg:ml-11">
             <div className=" w-full h-full rounded-full border-2 border-[#555555] flex items-center justify-center">
               <a href="/user">
-                <img src={ImageUser} alt="" className="w-9 h-9 hover:cursor-pointer" />
+                <img src={ImageUser} alt="user" className="w-9 h-9 hover:cursor-pointer" />
               </a>
             </div>
           </div>

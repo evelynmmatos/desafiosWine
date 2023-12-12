@@ -52,7 +52,7 @@ export default function ButtonSearch(){
     
     return (
         <>
-        <div className=" w-[45px] h-[45px] md:w-11 md:h-11 lg:w-14 lg:h-14 flex items-center justify-center md:ml-6  lg:ml-40 ">
+        <div data-testid="buttonSearch" className=" w-[45px] h-[45px] md:w-11 md:h-11 lg:w-14 lg:h-14 flex items-center justify-center md:ml-6  lg:ml-40 ">
             <button onClick={() => setOpenSeach(!openSearch)} className={`w-full h-full rounded-full border-2  flex items-center justify-center  outline-none ${openSearch ? "border-[#d14d8f]" : "border-[#555555]"}`} >
                {openSearch == true ? <img src={ImageSearchPink} alt="lupa-open" className=""/> : <img src={ImageSearch} alt="lupa-close" className=""/>}
             </button>
